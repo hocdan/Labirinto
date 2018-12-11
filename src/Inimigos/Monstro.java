@@ -2,14 +2,14 @@ package Inimigos;
 
 public class Monstro {
 	
-	//atributos b·sicos de todo monstro
+	//atributos b√°sicos de todo monstro
 	protected int vida;
 	protected int defesa;
 	protected int ataque;
 	protected int alcance;
 	protected int xp;
 	
-	//informaÁıes b·sicas de todo monstro
+	//informa√ß√µes b√°sicas de todo monstro
 	private int x;
 	private int y;
 	
@@ -19,11 +19,11 @@ public class Monstro {
 		//Convertendo string para minusculo
 		tipo = tipo.toLowerCase();
 		
-		//inicializando posiÁıes iniciais do monstro
+		//inicializando posi√ß√µes iniciais do monstro
 		this.x = posX;
 		this.y = posY;
 		
-		//inicializando atributos b·sicos por tipo de monstro
+		//inicializando atributos b√°sicos por tipo de monstro
 		if ( tipo.equals("goblin")) {
 			this.vida = 5 * fase;
 			this.defesa = 1 * fase;
@@ -52,14 +52,6 @@ public class Monstro {
 			this.ataque = 3 * fase;
 			this.alcance = 1;
 			this.xp = 4 * fase;
-			
-		}
-		else if ( tipo.equals("harpia")) {
-			this.vida = 6 * fase;
-			this.defesa = 3 * fase;
-			this.ataque = 5 * fase;
-			this.alcance = 3;
-			this.xp = 5 * fase;
 			
 		}
 		else if ( tipo.equals("troll")) {
@@ -94,6 +86,35 @@ public class Monstro {
 			this.xp = 15 * fase;
 			
 		}
+		else if(tipo.equals("sucubo")) {
+			this.vida = 8 * fase;
+			this.defesa = 4 * fase;
+			this.ataque = 9 * fase;
+			this.alcance = 3;
+			this.xp = 30 * fase;
+		}
+		else if ( tipo.equals("harpia")) {
+			this.vida = 6 * fase;
+			this.defesa = 3 * fase;
+			this.ataque = 5 * fase;
+			this.alcance = 3;
+			this.xp = 5 * fase;
+			
+		}
+		else if (tipo.equals("sereia")) {
+			this.vida = 5 * fase;
+			this.defesa = 3 * fase;
+			this.ataque = 10 * fase;
+			this.alcance = 10;
+			this.xp = 40 * fase;
+		}
+		else if (tipo.equals("empusa")) {
+			this.vida = 10 * fase;
+			this.defesa = 5 * fase;
+			this.ataque = 8 * fase;
+			this.alcance = 4;
+			this.xp = 50 * fase;
+		}
 		else if ( tipo.equals("minotauro")) {
 			this.vida = 20 * fase;
 			this.defesa = 10 * fase;
@@ -122,7 +143,7 @@ public class Monstro {
 			this.alcance = 5;
 			this.xp = 2000 * fase;
 		}
-		else if ( tipo.equals("tit„")) {
+		else if ( tipo.equals("tit√£")) {
 			this.vida = 100 * fase;
 			this.defesa = 80 * fase;
 			this.ataque = 80 * fase;
@@ -139,28 +160,28 @@ public class Monstro {
 		
 	}
 	
-	//aÁıes que todo monstro È capaz de fazer
+	//a√ß√µes que todo monstro √© capaz de fazer
 	public int atacar(String[][] labirinto) {
 		//procurando alvo nas redondezas...
 		for( int range=1; range<= this.alcance; range++) {
-			//alvo est· acima
+			//alvo est√° acima
 			if ( labirinto[this.y-range][this.x] == "&" && this.vida > 0) {
 				return this.ataque;
 			}
-			//alvo est· abaixo
+			//alvo est√° abaixo
 			else if ( labirinto[this.y+range][this.x] == "&" && this.vida > 0) {
 				return this.ataque;
 			}
-			//alvo est· na esquerda
+			//alvo est√° na esquerda
 			else if ( labirinto[this.y][this.x-range] == "&" && this.vida > 0) {
 				return this.ataque;
 			}
-			//alvo est· na direita
+			//alvo est√° na direita
 			else if ( labirinto[this.y][this.x+range] == "&" && this.vida > 0) {
 				return this.ataque;
 			}
 		}
-		//se n„o achou alvo em todas as direÁıes possÌveis dentro da sua range, ent„o...
+		//se n√£o achou alvo em todas as dire√ß√µes poss√≠veis dentro da sua range, ent√£o...
 		return 0;
 	}
 
